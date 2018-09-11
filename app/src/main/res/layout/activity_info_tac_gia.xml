@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#31416c"
+    android:orientation="vertical">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:id="@+id/the"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:background="@drawable/avatar1"
+                        android:id="@+id/id_avatarUser"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp">
+                    </ImageView>
+                    <TextView
+                        android:id="@+id/txtTenTacgia"
+                        android:layout_marginTop="10dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Lương Chung"
+                        android:textAllCaps="true"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        android:textSize="21sp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:orientation="horizontal">
+                    <!--3 icon-->
+                    <LinearLayout
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="80dp">
+                        <LinearLayout
+                            android:id="@+id/btnFaceBook"
+                            android:background="@drawable/hinhtron"
+                            android:gravity="center"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp">
+                            <ImageView
+                                android:backgroundTint="@color/white"
+                                android:background="@drawable/facebook"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/btnGmail"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="80dp">
+                        <LinearLayout
+                            android:background="@drawable/hinhtrongmail"
+                            android:gravity="center"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp">
+                            <ImageView
+                                android:backgroundTint="@color/white"
+                                android:background="@drawable/gmail"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/btnGithub"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="80dp">
+                        <LinearLayout
+                            android:background="@drawable/hinhtrongithub"
+                            android:gravity="center"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp">
+                            <ImageView
+                                android:backgroundTint="@color/white"
+                                android:background="@drawable/github"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp" />
+                        </LinearLayout>
+                </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/btnCall"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="80dp">
+                        <LinearLayout
+                            android:background="@drawable/hinhtroncall"
+                            android:gravity="center"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp">
+                            <ImageView
+                                android:backgroundTint="@color/white"
+                                android:background="@drawable/call"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <EditText
+                    android:background="@drawable/bovientxt"
+                    android:id="@+id/txtTenNgPhanHoi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Tên của bạn.."
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white" />
+
+                <EditText
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/bovientxt"
+                    android:gravity="left"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:id="@+id/txtNDphanhoi"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:hint="Nội dung đóng góp" />
+
+                <Button
+                    android:textColor="@color/white"
+                    android:id="@+id/btnPhanHoi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/bovien"
+                    android:text="Gửi phản hồi" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center"
+                    android:text="@string/version"
+                    android:textAllCaps="true"
+                    android:textColor="#e1dddd"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

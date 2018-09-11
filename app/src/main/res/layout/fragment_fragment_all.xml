@@ -1,0 +1,25 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="vn.lcsoft.luongchung.tluschedule.FragmentAll">
+    <RelativeLayout
+        android:id="@+id/bk_image1"
+        android:layout_gravity="center"
+        android:layout_width="300dp"
+        android:layout_height="400dp">
+    </RelativeLayout>
+    <!-- TODO: Update blank fragment layout -->
+    <com.baoyz.widget.PullRefreshLayout
+        android:id="@+id/id_pullall"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ExpandableListView
+            android:groupIndicator="@drawable/iconchange"
+            android:paddingTop="5dp"
+            android:id="@+id/lv_tatca"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </com.baoyz.widget.PullRefreshLayout>
+
+</FrameLayout>

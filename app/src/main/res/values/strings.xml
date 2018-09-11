@@ -1,0 +1,43 @@
+<resources>
+    <string name="app_name">TLU Schedule</string>
+    <string name="activity">Thời khóa biểu Thủy Lợi</string>
+    <string name="name_themlich">Thêm lịch tự động</string>
+    <string name="name_tintuc">Tin tức trường</string>
+    <string name="name_lienhe">Liên hệ tác giả</string>
+    <string name="name_caidat">Cài đặt</string>
+    <string name="name_huongdan">Hướng dẫn sử dụng</string>
+    <string name="urlMessaging">https://raw.githubusercontent.com/luongchung/luongchung.github.io/master/images/wru.jpg</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="ThoiGianTiet">
+        <item>07:00</item>
+        <item>07:55</item>
+        <item>08:50</item>
+        <item>09:45</item>
+        <item>10:40</item>
+        <item>11:35</item>
+        <item>12:55</item>
+        <item>13:50</item>
+        <item>14:45</item>
+        <item>15:40</item>
+        <item>16:35</item>
+        <item>17:30</item>
+        <item>18:50</item>
+        <item>19:45</item>
+        <item>20:40</item>
+    </string-array>
+    <string name="facebook_app_id">292826664586094</string>
+    <string name="fb_login_protocol_scheme">fb292826664586094</string>
+
+    <string name="khoaname">(Lưu ý: Tài khoản bị khóa nếu nội dung chát không lành mạnh)</string>
+    <string name="dangnhapthanhcong">Đăng nhập thành công!</string>
+    <string name="dangnhapkhongthanhcong">Lỗi đăng nhập, xin thử lại.</string>
+    <!--<string name="loidocdulieu">Lỗi đọc dữ liệu</string>-->
+    <string name="linkdangky">http://dkh.tlu.edu.vn</string>
+    <string name="hoi">Bạn có muốn xóa lịch trước đó không ?</string>
+    <string name="ketquadk">/CMCSoft.IU.Web.Info/Reports/Form/StudentTimeTable.aspx</string>
+    <string name="linkhinh">http://tlu.edu.vn</string>
+    <string name="linktintuc">http://tlu.edu.vn/tin-tuc-dai-hoc-thuy-loi</string>
+    <string name="luuURL">luuURL</string>
+    <string name="version">© 2017 LUONG CHUNG Version 3.0</string>
+    <string name="idfacebook">100004154587803</string>
+</resources>

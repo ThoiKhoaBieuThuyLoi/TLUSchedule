@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/btnHuongDan"
+        android:icon="@drawable/huongdan"
+        android:title="Hướng dẫn SD" />
+    <item
+        android:id="@+id/btnSuaLink"
+        android:icon="@drawable/sualink"
+        android:title="Sửa link" />
+    <item
+        android:id="@+id/loadlai"
+        android:icon="@drawable/loadling"
+        android:title="Load lại trang"/>
+    <item
+        android:id="@+id/btnNhapDL"
+        android:icon="@drawable/taixuong"
+        android:title="Nhập dữ liệu"/>
+
+</menu>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="#E9EBEE"
+    android:layout_height="100dp"
+    android:weightSum="1">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/textView1"
+        android:background="@color/white"
+        android:layout_weight="0.01" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        android:layout_weight="0.00">
+
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:weightSum="1"
+            android:layout_weight="0.09"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true">
+
+            <ImageView
+                android:id="@+id/id_Anh"
+                android:layout_width="117dp"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop" />
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_height="match_parent"
+                android:layout_width="310dp"
+                android:weightSum="1">
+
+                <TextView
+                    android:id="@+id/id_Tieu_De"
+                    android:layout_width="224dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="Gà nướng đất sét."
+                    android:textAllCaps="false"
+                    android:textColor="@color/Campfire_Do"
+                    android:textSize="18sp"
+                    android:textStyle="normal|bold" />
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="297dp"
+                    android:layout_height="match_parent"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:text="TextView"
+                        android:layout_width="273dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:id="@+id/id_Tom_Tat"
+                        android:textColor="@color/Campfire_Nau"
+                        android:textSize="15sp"
+                        android:textStyle="normal|italic" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </RelativeLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/textView"
+        android:background="@color/primary_dark_material_dark"
+        android:layout_weight="0.01" />
+</LinearLayout>

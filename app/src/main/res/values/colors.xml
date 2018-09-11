@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="nen">#4468B0</color>
+    <color name="chinh">#4468B0</color>
+    <color name="guillotine_background">#4468B0</color>
+    <color name="guillotine_background_dark">#4468B0</color>
+    <color name="selected_item_color">#30d1d5</color>
+    <color name="colorPrimary">#4468B0</color>
+    <color name="style_color_primary">#4468B0</color>
+    <color name="style_color_primary_dark">#4468B0</color>
+    <color name="style_color_accent">#01bcd5</color>
+    <color name="fab_color_pressed">#007787</color>
+    <color name="fab_color_shadow">#44000000</color>
+    <color name="text_like_counter">#4468B0</color>
+    <color name="paint_color">#dddddd</color>
+    <color name="white">#ffffff</color>
+    <color name="colorPrimaryDark">#4468B0</color>
+    <color name="colorAccent">#CC9414</color>
+    <color name="Campfire_Nau">#795548</color>
+    <color name="Campfire_Do">#cc4e14</color>
+    <color name="Do">#2dff34</color>
+    <color name="Goc">#4468B0</color>
+    <color name="Cuoi">#D44A3C</color>
+    <color name="nhe">#31405e</color>
+</resources>

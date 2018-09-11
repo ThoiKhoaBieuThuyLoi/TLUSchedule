@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "901519136190",
+    "firebase_url": "https://tluschedule.firebaseio.com",
+    "project_id": "tluschedule",
+    "storage_bucket": "tluschedule.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:901519136190:android:733b3d2649f6e28a",
+        "android_client_info": {
+          "package_name": "vn.lcsoft.luongchung.tluschedule"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "901519136190-8rc4ctb7ntnon91rev9a9fhri9toudla.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "vn.lcsoft.luongchung.tluschedule",
+            "certificate_hash": "f5c2a17ed1120eaa0ab4a3fba6cf95450efd54d2"
+          }
+        },
+        {
+          "client_id": "901519136190-0fls5a18i594tvhtcpp32e7prdp3r3p8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5RNVzr-Oq1Jz3lYmY9Pa4DoVLhg-UVPc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "901519136190-0fls5a18i594tvhtcpp32e7prdp3r3p8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

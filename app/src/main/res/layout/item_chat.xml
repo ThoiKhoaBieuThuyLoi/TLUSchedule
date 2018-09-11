@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.facebook.login.widget.ProfilePictureView
+            android:id="@+id/id_avatarUser"
+            android:layout_marginTop="10dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp">
+        </com.facebook.login.widget.ProfilePictureView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="8dp"
+            android:paddingLeft="10dp">
+            <TextView
+                android:id="@+id/id_nameUser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="--------"
+                android:textColor="#9ad5ff"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/id_tinNhanUser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text=""
+                android:textColor="#ffffff" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

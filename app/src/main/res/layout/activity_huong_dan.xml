@@ -1,0 +1,65 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/Goc">
+    <LinearLayout
+        android:id="@+id/lv"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/hd"
+            android:gravity="center"
+            android:textSize="24dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:paddingLeft="10dp"
+            android:text="HƯỚNG DẪN:"
+            android:layout_margin="30dp"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/hd1"
+            android:textSize="18dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:paddingLeft="10dp"
+            android:text="+ Bước 1: Đăng nhập hệ thống đăng ký học."
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/hd2"
+            android:textSize="18dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:text="+ Bước 2: Đến trang kết quả đăng ký học."
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/hd3"
+            android:textSize="18dp"
+            android:paddingBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:text="+ Bước 3: Chọn giai đoạn lịch học cần lấy về và Click vào nút (Nhập dữ liệu) phía dưới."
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+            <Button
+                android:id="@+id/btnYoutube"
+                android:text="Xem hướng dẫn youtube"
+                android:textColor="@color/white"
+                android:background="@drawable/bovien"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        <WebView
+            android:id="@+id/webview1"
+            android:layout_width="1dp"
+            android:layout_height="1dp">
+        </WebView>
+    </LinearLayout>
+</RelativeLayout>
