@@ -10,19 +10,17 @@
     <WebView
         android:id="@+id/wv_TuDong"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
+        android:layout_height="0dp"
         android:layout_weight="0.98">
     </WebView>
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"
+        android:layout_weight="0.02"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        app:labelVisibilityMode="labeled"
         app:itemTextColor="#ffff"
         app:itemIconTint="#ffff"
         android:background="@color/Goc"
-        android:layout_alignParentBottom="true"
         app:menu="@menu/navigation_botton"/>
 </LinearLayout>

@@ -9,50 +9,38 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:background="@drawable/backgroud"
-            app:contentInsetStart="0dp"
-            style="@style/Toolbar">
-            <LinearLayout
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <ImageView
-                    android:layout_marginLeft="20dp"
-                    android:src="@drawable/ic_calendar"
-                    android:layout_gravity="center"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp" />
-                <TextView
-                    android:id="@+id/txtNameMain"
-                    android:layout_marginLeft="10dp"
-                    android:gravity="center_vertical"
-                    android:textSize="23sp"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:text="@string/app_name"
-                    android:textColor="#E4992F"
-                    android:textStyle="bold"/>
-            </LinearLayout>
-        </android.support.v7.widget.Toolbar>
-        <android.support.v4.view.ViewPager
-            android:id="@+id/viewpager"
-            android:background="@android:color/white"
+        <include
+            android:id="@+id/toolbar_actionbar"
+            layout="@layout/bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <android.support.v4.view.PagerTabStrip
+            <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:paddingLeft="40dp"
-                android:paddingRight="40dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/pagerTabStrip"
-                android:layout_gravity="top"
-                android:background="@drawable/backgroud"
-                android:textColor="@color/white" />
-        </android.support.v4.view.ViewPager>
+                android:layout_height="match_parent">
+                <!--load ảnh-->
+                <android.support.design.widget.TabLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/Goc"
+                    app:tabTextColor="#ffff"
+                    app:tabSelectedTextColor="#e2e482"
+                    app:tabIndicatorColor="#f1df5b"
+                    android:id="@+id/tablayout"
+                    app:tabMode="fixed"
+                    app:tabGravity="fill">
+                </android.support.design.widget.TabLayout>
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/viewpager"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#ffffff">
+                </android.support.v4.view.ViewPager>
+            </LinearLayout>
+        </android.support.design.widget.AppBarLayout>
     </LinearLayout>
     <LinearLayout
         android:background="@drawable/backgroud"

@@ -87,16 +87,14 @@ public class ThemTuDong extends AppCompatActivity {
                 }
                 if(item.getItemId() == R.id.btnNhapDL)
                 {
-                    if(tmpURL.equals(url+getString(R.string.ketquadk))){
-                        nhapdulieu();
-                    }else {
-                        Toast.makeText(ThemTuDong.this, "Bạn phải đến trang kết quả đăng ký \n     Mới nhập được dữ liệu.", Toast.LENGTH_LONG).show();
-                    }
+                    nhapdulieu();
                 }
                 return false;
             }
         });
     }
+
+
     private void nhapdulieu() {
         new AlertDialog.Builder(ThemTuDong.this).setTitle("CHÚ Ý")
                 .setMessage(getString(R.string.hoi))
@@ -240,6 +238,7 @@ public class ThemTuDong extends AppCompatActivity {
         dialog = new ProgressDialog(this, AlertDialog.THEME_DEVICE_DEFAULT_DARK);
         dialog_custom =new Dialog(ThemTuDong.this);
         navigationView=findViewById(R.id.navigation);
+        BottomNavigationHelper.disableShiftMode(navigationView);
         webview =findViewById(R.id.wv_TuDong);
         webview.getSettings().setJavaScriptEnabled(true);
         webview.getSettings().setLoadWithOverviewMode(true);

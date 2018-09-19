@@ -5,17 +5,15 @@ import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.v4.view.PagerTabStrip;
+import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.FacebookSdk;
-import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.io.File;
@@ -25,10 +23,10 @@ import java.io.OutputStream;
 import vn.lcsoft.luongchung.adapters.ViewPagerAdapter;
 
 public class MainActivity extends AppCompatActivity {
+    private TabLayout tabLayout;
     private ViewPager viewPager;
     private TextView txtNameMain;
     private ViewPagerAdapter viewPagerAdapter;
-    private PagerTabStrip pagerTabStrip;
     private TextView txt1,txt2,txt3,txt4;
     private LinearLayout btn1,btn2,btn3,btn4;
     private String LuuThoiGianTietHoc="Chuaco";
@@ -83,8 +81,8 @@ public class MainActivity extends AppCompatActivity {
     }
     private void init() {
         FirebaseMessaging.getInstance().setAutoInitEnabled(true);
-        String refreshedToken = FirebaseInstanceId.getInstance().getToken();
-        Log.d("LUONGCHUNGTEST", "New Token: " + refreshedToken);
+       // String refreshedToken = FirebaseInstanceId.getInstance().getToken();
+        //Log.d("LUONGCHUNGTEST", "New Token: " + refreshedToken);
         FacebookSdk.sdkInitialize(getApplicationContext());
         txtNameMain=  findViewById(R.id.txtNameMain);
         txt1= findViewById(R.id.txt1);
@@ -105,23 +103,21 @@ public class MainActivity extends AppCompatActivity {
         txt4.setTypeface(font);
     }
     private void setupTabPaper() {
+
+        tabLayout =  findViewById(R.id.tablayout);
         viewPager = findViewById(R.id.viewpager);
         viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         viewPagerAdapter.addFragments(new FragmentToday(), "HÔM NAY");
         viewPagerAdapter.addFragments(new FragmentAll(), "TẤT CẢ");
-        viewPager.setAdapter(viewPagerAdapter);;
+        viewPager.setAdapter(viewPagerAdapter);
+        tabLayout.setupWithViewPager(viewPager);
+
+
+
         Typeface fontTypeFace= Typeface.createFromAsset(getApplication().getAssets(),
                 "fonts/fontmain.ttf");
 
-        pagerTabStrip= findViewById(R.id.pagerTabStrip);
-        for (int i = 0; i < pagerTabStrip.getChildCount(); ++i) {
-            View nextChild = pagerTabStrip.getChildAt(i);
-            if (nextChild instanceof TextView) {
-                TextView textViewToConvert = (TextView) nextChild;
-                textViewToConvert.setTypeface(fontTypeFace);
-                textViewToConvert.setAllCaps(true);
-            }
-        }
+
     }
     private void addthoigiantiethoc() {
         SharedPreferences sharedPreferences= getSharedPreferences(LuuThoiGianTietHoc,MODE_PRIVATE);
