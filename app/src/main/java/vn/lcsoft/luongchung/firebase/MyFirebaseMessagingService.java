@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
+import android.util.Log;
+
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 import com.squareup.picasso.Picasso;
@@ -35,6 +37,8 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             sendNotification(remoteMessage.getNotification().getBody(),remoteMessage.getNotification().getTitle());
         }
     }
+
+
     private void sendNotification(String body, String ti) {
         Intent intent = new Intent(this, Thongbao.class);
         intent.putExtra("kieu",kieu);

@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context="vn.lcsoft.luongchung.tluschedule.MainActivity">
     <LinearLayout
+        android:background="@drawable/backgroud"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -25,10 +26,9 @@
                 <android.support.design.widget.TabLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/Goc"
-                    app:tabTextColor="#ffff"
-                    app:tabSelectedTextColor="#e2e482"
-                    app:tabIndicatorColor="#f1df5b"
+                    app:tabTextColor="#ffffff"
+                    app:tabSelectedTextColor="#E4992F"
+                    app:tabIndicatorColor="#E4992F"
                     android:id="@+id/tablayout"
                     app:tabMode="fixed"
                     app:tabGravity="fill">

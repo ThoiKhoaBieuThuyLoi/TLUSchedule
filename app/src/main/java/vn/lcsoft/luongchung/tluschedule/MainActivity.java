@@ -8,12 +8,14 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.FacebookSdk;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.io.File;
@@ -80,9 +82,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
     private void init() {
-        FirebaseMessaging.getInstance().setAutoInitEnabled(true);
-       // String refreshedToken = FirebaseInstanceId.getInstance().getToken();
-        //Log.d("LUONGCHUNGTEST", "New Token: " + refreshedToken);
         FacebookSdk.sdkInitialize(getApplicationContext());
         txtNameMain=  findViewById(R.id.txtNameMain);
         txt1= findViewById(R.id.txt1);
@@ -141,7 +140,6 @@ public class MainActivity extends AppCompatActivity {
             try
             {
                 saoChepDatabaseTuAsset();
-
             }
             catch (Exception ex)
             {
