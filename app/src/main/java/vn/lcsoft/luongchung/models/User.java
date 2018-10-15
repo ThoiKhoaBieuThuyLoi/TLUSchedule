@@ -6,16 +6,26 @@ public class User {
     private String email;
     private String gioitinh;
     private String sinhnhat;
+    private String keyFirebase;
+
+    public String getKeyFirebase() {
+        return keyFirebase;
+    }
+
+    public void setKeyFirebase(String keyFirebase) {
+        this.keyFirebase = keyFirebase;
+    }
 
     public User() {
     }
 
-    public User(String id, String name, String email, String gioitinh, String sinhnhat) {
+    public User(String id, String name, String email, String gioitinh, String sinhnhat,String key) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.gioitinh = gioitinh;
         this.sinhnhat = sinhnhat;
+        this.keyFirebase=key;
     }
 
     public String getId() {

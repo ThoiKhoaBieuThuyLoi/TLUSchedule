@@ -59,7 +59,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <ImageView
-                android:src="@drawable/ic_them"
+                android:src="@drawable/ic_add"
                 android:layout_width="35dp"
                 android:layout_height="35dp" />
             <TextView
@@ -89,16 +89,39 @@
                 android:id="@+id/txt2" />
         </LinearLayout>
         <LinearLayout
-            android:id="@+id/btn3"
+            android:id="@+id/btn5"
             android:gravity="center"
             android:layout_weight="1"
             android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <ImageView
-                android:src="@drawable/ic_conversation"
+                android:src="@drawable/ic_phonebook"
                 android:layout_width="35dp"
                 android:layout_height="35dp" />
+            <TextView
+                android:textColor="@color/white"
+                android:id="@+id/txt5"
+                android:text="Danh bạ GV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/btn3"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:layout_width="35dp"
+                android:layout_height="35dp">
+                <ImageView
+                    android:src="@drawable/ic_group"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </RelativeLayout>
             <TextView
                 android:textColor="@color/white"
                 android:id="@+id/txt3"
@@ -106,6 +129,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/btn4"
             android:gravity="center"
@@ -114,13 +138,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <ImageView
-                android:src="@drawable/ic_tacgia"
+                android:src="@drawable/ic_support"
                 android:layout_width="35dp"
                 android:layout_height="35dp" />
             <TextView
                 android:textColor="@color/white"
                 android:id="@+id/txt4"
-                android:text="Thông tin"
+                android:text="Hỗ trợ"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>

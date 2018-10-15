@@ -2,14 +2,20 @@ package vn.lcsoft.luongchung.tluschedule;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,6 +28,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 import vn.lcsoft.luongchung.adapters.ViewPagerAdapter;
 
 public class MainActivity extends AppCompatActivity {
@@ -29,12 +38,13 @@ public class MainActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private TextView txtNameMain;
     private ViewPagerAdapter viewPagerAdapter;
-    private TextView txt1,txt2,txt3,txt4;
-    private LinearLayout btn1,btn2,btn3,btn4;
+    private TextView txt1,txt2,txt3,txt4,txt5;
+    private LinearLayout btn1,btn2,btn3,btn4,btn5;
     private String LuuThoiGianTietHoc="Chuaco";
     private SQLiteDatabase sqLiteDatabase=null;
     private String DATABASE_NAME="dbthoikhoabieu.sqlite";
     private String DB_PATH="/databases/";
+    private Button btnHDdd;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,34 +75,53 @@ public class MainActivity extends AppCompatActivity {
         btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               // Intent intent =new Intent(MainActivity.this,InfoTacGia.class);
-               // startActivity(intent);
-                Toast.makeText(MainActivity.this, "Chức năng này đang bảo trì !", Toast.LENGTH_SHORT).show();
+                Intent intent =new Intent(MainActivity.this,LoginChat.class);
+                startActivity(intent);
+               // Toast.makeText(MainActivity.this, "Chức năng này đang bảo trì !", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+        btn5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(MainActivity.this, "Tính năng này sắm ra mắt ! \n Đang phát triển....", Toast.LENGTH_SHORT).show();
+//                Intent intent =new Intent(MainActivity.this,InfoTacGia.class);
+//                startActivity(intent);
 
             }
         });
         btn4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               // Toast.makeText(MainActivity.this, "Chức năng này đang bảo trì !", Toast.LENGTH_SHORT).show();
+                // Toast.makeText(MainActivity.this, "Chức năng này đang bảo trì !", Toast.LENGTH_SHORT).show();
                 Intent intent =new Intent(MainActivity.this,InfoTacGia.class);
                 startActivity(intent);
 
+            }
+        });
+        btnHDdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent =new Intent(MainActivity.this,HuongDan.class);
+                startActivity(intent);
             }
         });
     }
     private void init() {
         FacebookSdk.sdkInitialize(getApplicationContext());
         txtNameMain=  findViewById(R.id.txtNameMain);
+        btnHDdd= findViewById(R.id.btnHDdd);
         txt1= findViewById(R.id.txt1);
         txt2= findViewById(R.id.txt2);
         txt3= findViewById(R.id.txt3);
         txt4= findViewById(R.id.txt4);
+        txt5= findViewById(R.id.txt5);
 
         btn1= findViewById(R.id.btn1);
         btn2= findViewById(R.id.btn2);
         btn3= findViewById(R.id.btn3);
         btn4= findViewById(R.id.btn4);
+        btn5= findViewById(R.id.btn5);
 
         Typeface font = Typeface.createFromAsset(this.getAssets(),"fonts/fontmain.ttf");
         txtNameMain.setTypeface(font);
@@ -100,7 +129,26 @@ public class MainActivity extends AppCompatActivity {
         txt2.setTypeface(font);
         txt3.setTypeface(font);
         txt4.setTypeface(font);
+        txt5.setTypeface(font);
+        //kiểm tra update
+       // checkUpdate();
     }
+//    private void checkUpdate() {
+//        SharedPreferences sharedPreferences= getSharedPreferences(LuuThoiGianTietHoc,MODE_PRIVATE);
+//        int versioncodekhoa =sharedPreferences.getInt("versioncode",0);
+//        int versioncode=100000;
+//        try {
+//            PackageInfo pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
+//            versioncode = pInfo.versionCode;
+//        } catch (PackageManager.NameNotFoundException e) {
+//            e.printStackTrace();
+//        }
+//        if(versioncodekhoa>versioncode){
+//            Intent intent =new Intent(MainActivity.this,UpdateApp.class);
+//            startActivity(intent);
+//        }
+//    }
+
     private void setupTabPaper() {
 
         tabLayout =  findViewById(R.id.tablayout);
@@ -110,12 +158,6 @@ public class MainActivity extends AppCompatActivity {
         viewPagerAdapter.addFragments(new FragmentAll(), "TẤT CẢ");
         viewPager.setAdapter(viewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
-
-
-
-        Typeface fontTypeFace= Typeface.createFromAsset(getApplication().getAssets(),
-                "fonts/fontmain.ttf");
-
 
     }
     private void addthoigiantiethoc() {

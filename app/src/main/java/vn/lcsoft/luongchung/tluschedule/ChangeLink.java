@@ -9,7 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class ChangeLink extends AppCompatActivity {
-    Button btnChangeLink;
+    Button btnChangeLink,btnBanDau;
     TextView txtLink;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,7 +17,7 @@ public class ChangeLink extends AppCompatActivity {
         setContentView(R.layout.activity_change_link);
         txtLink=findViewById(R.id.txturldangky);
         btnChangeLink=findViewById(R.id.btnLuuURL);
-
+        btnBanDau=findViewById(R.id.btnDatLai);
 
         btnChangeLink.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -27,8 +27,20 @@ public class ChangeLink extends AppCompatActivity {
                 editor.putString("URL",txtLink.getText().toString());
                 editor.commit();
                 String url=sharedPreferences.getString("URL",getString(R.string.linkdangky));
-                Toast.makeText(ChangeLink.this, "Dổi link thành công!" +url, Toast.LENGTH_LONG).show();
+                Toast.makeText(ChangeLink.this, "Dổi link thành công! " +url, Toast.LENGTH_LONG).show();
                 finish();
+            }
+        });
+        btnBanDau.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SharedPreferences sharedPreferences= getSharedPreferences(getString(R.string.luuURL),MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString("URL",getString(R.string.linkdangky));
+                editor.commit();
+                String url=sharedPreferences.getString("URL",getString(R.string.linkdangky));
+                Toast.makeText(ChangeLink.this, "Đã đặt lại ban đầu! " +url, Toast.LENGTH_LONG).show();
+
             }
         });
     }

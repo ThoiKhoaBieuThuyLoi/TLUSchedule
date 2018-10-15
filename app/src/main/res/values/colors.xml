@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="den">#383636</color>
     <color name="nen">#4468B0</color>
     <color name="chinh">#4468B0</color>
     <color name="guillotine_background">#4468B0</color>

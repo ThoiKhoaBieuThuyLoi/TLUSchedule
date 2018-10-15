@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical"
+    android:background="@drawable/backgroudchat"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ChatMain">
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <LinearLayout
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_weight="1"
+                android:id="@+id/txtMainTT"
+                android:text="Trò chuyện"
+                android:textStyle="bold"
+                android:gravity="left"
+                android:textSize="22sp"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+            <TextView
+                android:layout_weight="1"
+                android:id="@+id/txtSL"
+                android:text="(100 User)"
+                android:textStyle="bold"
+                android:gravity="right"
+                android:textSize="22sp"
+                android:textColor="#2fff00"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+        <RelativeLayout
+            android:padding="6dp"
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <EditText
+                android:layout_margin="2dp"
+                android:background="@drawable/bovientxt"
+                android:id="@+id/txtND"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_toLeftOf="@+id/btnGui"
+                android:autoText="true"
+                android:hint="  Bạn muốn nói gì?" />
+            <Button
+                android:id="@+id/btnGui"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:textAllCaps="false"
+                android:backgroundTint="@color/white"
+                android:textStyle="bold"
+                android:background="@drawable/ic_victory"
+                android:textColor="@color/colorPrimary"/>
+            <ListView
+                android:id="@+id/lv_chat"
+                android:paddingTop="10dp"
+                android:stackFromBottom="true"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="false"
+                android:layout_alignParentTop="false"
+                android:layout_marginBottom="10dp"
+                android:layout_above="@+id/txtND"
+                android:listSelector="@android:color/transparent"
+                android:transcriptMode="alwaysScroll"
+                android:divider="@null" />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout >

@@ -120,5 +120,15 @@ public class InfoTacGia extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance().getReference();
         Typeface font = Typeface.createFromAsset(this.getAssets(),"fonts/fontmain.ttf");
         txtMain.setTypeface(font);
+
+
+        TextView tt1=findViewById(R.id.tt1);
+        TextView tt2=findViewById(R.id.tt2);
+        TextView tt3=findViewById(R.id.tt3);
+        TextView tt4=findViewById(R.id.tt4);
+        tt1.setTypeface(font);
+        tt2.setTypeface(font);
+        tt3.setTypeface(font);
+        tt4.setTypeface(font);
     }
 }

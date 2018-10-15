@@ -2,43 +2,101 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#31416c"
+    android:background="@drawable/backgroud"
     android:orientation="vertical">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
+            android:focusable="true"
+            android:focusableInTouchMode="true"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/tt4"
+                android:text="Thông tin tác giả"
+                android:gravity="center"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
             <LinearLayout
                 android:id="@+id/the"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <LinearLayout
+                    android:padding="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
-                    <ImageView
-                        android:background="@drawable/avatar1"
-                        android:id="@+id/id_avatarUser"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="10dp"
-                        android:layout_width="150dp"
-                        android:layout_height="150dp">
-                    </ImageView>
-                    <TextView
-                        android:id="@+id/txtTenTacgia"
-                        android:layout_marginTop="10dp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Lương Chung"
-                        android:textAllCaps="true"
-                        android:textColor="@color/white"
-                        android:textStyle="bold"
-                        android:textSize="21sp"/>
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:background="@drawable/avatar1"
+                            android:id="@+id/id_avatarUser"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="10dp"
+                            android:layout_width="150dp"
+                            android:layout_height="150dp">
+                        </ImageView>
+                        <LinearLayout
+                            android:layout_weight="1"
+                            android:paddingLeft="10dp"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <TextView
+                                android:layout_weight="1"
+                                android:id="@+id/txtTenTacgia"
+                                android:layout_marginTop="10dp"
+                                android:layout_gravity="left"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Lương Văn Chung"
+                                android:textAllCaps="false"
+                                android:textColor="@color/white"
+                                android:textStyle="bold"
+                                android:textSize="23sp"/>
+                            <TextView
+                                android:layout_weight="1"
+                                android:id="@+id/tt1"
+                                android:layout_gravity="left"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="13/11/1996"
+                                android:textAllCaps="false"
+                                android:textColor="@color/white"
+                                android:textStyle="bold"
+                                android:textSize="18sp"/>
+                            <TextView
+                                android:layout_weight="1"
+                                android:id="@+id/tt2"
+                                android:layout_gravity="left"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="TLU.56TH-PM"
+                                android:textAllCaps="false"
+                                android:textColor="@color/white"
+                                android:textStyle="bold"
+                                android:textSize="18sp"/>
+                            <TextView
+                                android:layout_weight="1"
+                                android:id="@+id/tt3"
+                                android:layout_gravity="left"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Gia Loc, Hai Duong, VN"
+                                android:textAllCaps="false"
+                                android:textColor="@color/white"
+                                android:textStyle="bold"
+                                android:textSize="18sp"/>
+                        </LinearLayout>
+                    </LinearLayout>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_marginTop="10dp"
@@ -134,28 +192,34 @@
                 android:orientation="vertical">
 
                 <EditText
+                    android:fontFamily="sans-serif"
                     android:background="@drawable/bovientxt"
                     android:id="@+id/txtTenNgPhanHoi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Tên của bạn.."
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/white" />
+                    android:hint="Tên của bạn..."
+                    android:textColor="@color/den"
+                    android:textColorHint="@color/den" />
 
                 <EditText
+                    android:fontFamily="sans-serif"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/bovientxt"
                     android:gravity="left"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/white"
+                    android:textColor="@color/den"
+                    android:textColorHint="@color/den"
                     android:id="@+id/txtNDphanhoi"
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
-                    android:hint="Nội dung đóng góp" />
+                    android:hint="Nội dung đóng góp..." />
 
                 <Button
-                    android:textColor="@color/white"
+                    android:textColor="@color/colorPrimary"
                     android:id="@+id/btnPhanHoi"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:textAllCaps="false"
+                    android:fontFamily="sans-serif"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"

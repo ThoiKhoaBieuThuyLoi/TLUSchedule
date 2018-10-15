@@ -43,9 +43,9 @@ public class AdapterTinTuc extends ArrayAdapter<TinTuc_m> {
         View row = layoutInflater.inflate(this.resource, null);
 
         try {
-        TextView id_TieuDe= (TextView) row.findViewById(R.id.id_Tieu_De);
-        TextView id_TomTat= (TextView) row.findViewById(R.id.id_Tom_Tat);
-        ImageView id_Anh= (ImageView) row.findViewById(R.id.id_Anh);
+        TextView id_TieuDe= row.findViewById(R.id.id_Tieu_De);
+        TextView id_TomTat= row.findViewById(R.id.id_Tom_Tat);
+        ImageView id_Anh= row.findViewById(R.id.id_Anh);
         final TinTuc_m tinTucM =objects.get(position);
         id_TieuDe.setText(tinTucM.getTieuDe());
         id_TomTat.setText(tinTucM.getTomTat());

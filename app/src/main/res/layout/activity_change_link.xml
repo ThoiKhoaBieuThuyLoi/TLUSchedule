@@ -2,7 +2,6 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="@color/Goc"
-
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <LinearLayout
@@ -15,6 +14,7 @@
             android:layout_marginBottom="30dp"
             android:gravity="center"
             android:textStyle="bold"
+            android:fontFamily="sans-serif"
             android:textSize="19dp"
             android:textColor="@color/white"
             android:layout_width="match_parent"
@@ -25,28 +25,47 @@
             android:gravity="center"
             android:textStyle="bold"
             android:textSize="19dp"
+            android:fontFamily="sans-serif"
             android:textColor="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <EditText
+            android:background="@drawable/bovientxt"
             android:hint="http://dkh.tlu.edu.vn"
             android:id="@+id/txturldangky"
-            android:layout_marginLeft="10dp"
+            android:fontFamily="sans-serif"
             android:textColorHint="#afafaf"
-            android:textColor="@color/white"
+            android:textColor="@color/den"
             android:text="http://"
+            android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <Button
             android:id="@+id/btnLuuURL"
             android:text="Lưu đường dẫn"
-            android:layout_margin="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:textStyle="bold"
-            android:textAllCaps="true"
-            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:fontFamily="sans-serif"
+            android:textColor="@color/colorPrimary"
             android:background="@drawable/bovien"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/btnDatLai"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:text="Đặt lại ban đầu"
+            android:textStyle="bold"
+            android:textAllCaps="false"
+            android:fontFamily="sans-serif"
+            android:textColor="@color/colorPrimary"
+            android:background="@drawable/bovien"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </LinearLayout>
 

@@ -3,12 +3,12 @@
     package="vn.lcsoft.luongchung.tluschedule">
 
     <uses-permission android:name="android.permission.INTERNET" />
-<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
     <application
         android:allowBackup="true"
-        android:minSdkVersion="8"
         android:icon="@mipmap/ic_tlu"
         android:label="@string/app_name"
+        android:minSdkVersion="8"
         android:roundIcon="@mipmap/ic_tlu"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -25,6 +25,7 @@
         <activity android:name=".ChangeLink" />
         <activity android:name=".TinTuc" />
         <activity android:name=".NoiDungTinTuc" />
+
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
@@ -45,19 +46,22 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-        <activity android:name=".Thongbao"></activity>
 
         <service android:name="vn.lcsoft.luongchung.firebase.MyFirebaseMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-        <service
-            android:name="vn.lcsoft.luongchung.firebase.MyFirebaseInstanceIDService">
+        <service android:name="vn.lcsoft.luongchung.firebase.MyFirebaseInstanceIDService">
             <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
+
+        <activity android:name=".Thongbao" />
+        <activity android:name=".LoginChat" />
+        <activity android:name=".ChatMain" />
+        <activity android:name=".UpdateApp"></activity>
     </application>
 
 </manifest>
