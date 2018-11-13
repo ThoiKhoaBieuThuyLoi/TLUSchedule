@@ -18,12 +18,12 @@ public class ChangeLink extends AppCompatActivity {
         txtLink=findViewById(R.id.txturldangky);
         btnChangeLink=findViewById(R.id.btnLuuURL);
         btnBanDau=findViewById(R.id.btnDatLai);
-
+        final SharedPreferences sharedPreferences= getSharedPreferences(getString(R.string.luuURL),MODE_PRIVATE);
+        final SharedPreferences.Editor editor = sharedPreferences.edit();
         btnChangeLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SharedPreferences sharedPreferences= getSharedPreferences(getString(R.string.luuURL),MODE_PRIVATE);
-                SharedPreferences.Editor editor = sharedPreferences.edit();
+
                 editor.putString("URL",txtLink.getText().toString());
                 editor.commit();
                 String url=sharedPreferences.getString("URL",getString(R.string.linkdangky));
@@ -34,8 +34,6 @@ public class ChangeLink extends AppCompatActivity {
         btnBanDau.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharedPreferences sharedPreferences= getSharedPreferences(getString(R.string.luuURL),MODE_PRIVATE);
-                SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putString("URL",getString(R.string.linkdangky));
                 editor.commit();
                 String url=sharedPreferences.getString("URL",getString(R.string.linkdangky));

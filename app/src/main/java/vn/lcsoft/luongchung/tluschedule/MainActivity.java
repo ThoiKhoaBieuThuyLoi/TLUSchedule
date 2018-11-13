@@ -21,6 +21,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.FacebookSdk;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessaging;
 
@@ -34,14 +39,9 @@ import java.security.NoSuchAlgorithmException;
 import vn.lcsoft.luongchung.adapters.ViewPagerAdapter;
 
 public class MainActivity extends AppCompatActivity {
-    private TabLayout tabLayout;
-    private ViewPager viewPager;
-    private TextView txtNameMain;
-    private ViewPagerAdapter viewPagerAdapter;
-    private TextView txt1,txt2,txt3,txt4,txt5;
+
+    private InterstitialAd mInterstitialAd;
     private LinearLayout btn1,btn2,btn3,btn4,btn5;
-    private String LuuThoiGianTietHoc="Chuaco";
-    private SQLiteDatabase sqLiteDatabase=null;
     private String DATABASE_NAME="dbthoikhoabieu.sqlite";
     private String DB_PATH="/databases/";
     private Button btnHDdd;
@@ -108,14 +108,14 @@ public class MainActivity extends AppCompatActivity {
         });
     }
     private void init() {
-        FacebookSdk.sdkInitialize(getApplicationContext());
-        txtNameMain=  findViewById(R.id.txtNameMain);
+//        FacebookSdk.sdkInitialize(getApplicationContext());
+        TextView txtNameMain = findViewById(R.id.txtNameMain);
         btnHDdd= findViewById(R.id.btnHDdd);
-        txt1= findViewById(R.id.txt1);
-        txt2= findViewById(R.id.txt2);
-        txt3= findViewById(R.id.txt3);
-        txt4= findViewById(R.id.txt4);
-        txt5= findViewById(R.id.txt5);
+        TextView txt1 = findViewById(R.id.txt1);
+        TextView txt2 = findViewById(R.id.txt2);
+        TextView txt3 = findViewById(R.id.txt3);
+        TextView txt4 = findViewById(R.id.txt4);
+        TextView txt5 = findViewById(R.id.txt5);
 
         btn1= findViewById(R.id.btn1);
         btn2= findViewById(R.id.btn2);
@@ -130,30 +130,49 @@ public class MainActivity extends AppCompatActivity {
         txt3.setTypeface(font);
         txt4.setTypeface(font);
         txt5.setTypeface(font);
-        //kiểm tra update
-       // checkUpdate();
-    }
-//    private void checkUpdate() {
-//        SharedPreferences sharedPreferences= getSharedPreferences(LuuThoiGianTietHoc,MODE_PRIVATE);
-//        int versioncodekhoa =sharedPreferences.getInt("versioncode",0);
-//        int versioncode=100000;
-//        try {
-//            PackageInfo pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
-//            versioncode = pInfo.versionCode;
-//        } catch (PackageManager.NameNotFoundException e) {
-//            e.printStackTrace();
-//        }
-//        if(versioncodekhoa>versioncode){
-//            Intent intent =new Intent(MainActivity.this,UpdateApp.class);
-//            startActivity(intent);
-//        }
-//    }
 
+        quangcao();
+    }
+
+
+    private void quangcao() {
+        MobileAds.initialize(MainActivity.this, "ca-app-pub-5001443737686857~4542932552");
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+                // Code to be executed when an ad finishes loading.
+            }
+
+            @Override
+            public void onAdFailedToLoad(int errorCode) {
+                // Code to be executed when an ad request fails.
+            }
+
+            @Override
+            public void onAdOpened() {
+
+            }
+
+            @Override
+            public void onAdLeftApplication() {
+                // Code to be executed when the user has left the app.
+            }
+
+            @Override
+            public void onAdClosed() {
+                // Code to be executed when when the interstitial ad is closed.
+            }
+        });
+        mInterstitialAd.setAdUnitId("ca-app-pub-5001443737686857/7029495090");
+        mInterstitialAd.loadAd(new AdRequest.Builder().build());
+
+    }
     private void setupTabPaper() {
 
-        tabLayout =  findViewById(R.id.tablayout);
-        viewPager = findViewById(R.id.viewpager);
-        viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
+        TabLayout tabLayout = findViewById(R.id.tablayout);
+        ViewPager viewPager = findViewById(R.id.viewpager);
+        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         viewPagerAdapter.addFragments(new FragmentToday(), "HÔM NAY");
         viewPagerAdapter.addFragments(new FragmentAll(), "TẤT CẢ");
         viewPager.setAdapter(viewPagerAdapter);
@@ -161,7 +180,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
     private void addthoigiantiethoc() {
-        SharedPreferences sharedPreferences= getSharedPreferences(LuuThoiGianTietHoc,MODE_PRIVATE);
+        String luuThoiGianTietHoc = "Chuaco";
+        SharedPreferences sharedPreferences= getSharedPreferences(luuThoiGianTietHoc,MODE_PRIVATE);
         Boolean kt=sharedPreferences.getBoolean("landau",true);
         if(kt)
         {
@@ -172,7 +192,7 @@ public class MainActivity extends AppCompatActivity {
                 editor.putString(String.valueOf(i),arrTG[i-1]);
             }
             editor.putBoolean("landau",false);
-            editor.commit();
+            editor.apply();
         }
     }
     private void xuLySaoChepSQLite() {
@@ -223,4 +243,14 @@ public class MainActivity extends AppCompatActivity {
     private String layDuongDanLuuTru() {
         return getApplicationInfo().dataDir+DB_PATH+DATABASE_NAME;
     }
+
+    @Override
+    public void onBackPressed() {
+        if (mInterstitialAd.isLoaded()) {
+            mInterstitialAd.show();
+        } else {
+            super.onBackPressed();
+        }
+    }
+
 }

@@ -29,16 +29,6 @@
                 android:textColor="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent" />
-            <TextView
-                android:layout_weight="1"
-                android:id="@+id/txtSL"
-                android:text="(100 User)"
-                android:textStyle="bold"
-                android:gravity="right"
-                android:textSize="22sp"
-                android:textColor="#2fff00"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent" />
         </LinearLayout>
         <RelativeLayout
             android:padding="6dp"

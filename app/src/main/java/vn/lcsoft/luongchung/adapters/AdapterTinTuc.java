@@ -1,6 +1,7 @@
 package vn.lcsoft.luongchung.adapters;
 
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -15,7 +16,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
-import com.squareup.picasso.Picasso;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.util.ArrayList;
 
@@ -24,9 +26,9 @@ import vn.lcsoft.luongchung.tluschedule.NoiDungTinTuc;
 import vn.lcsoft.luongchung.tluschedule.R;
 
 public class AdapterTinTuc extends ArrayAdapter<TinTuc_m> {
-    Activity context;
-    int resource;
-    ArrayList<TinTuc_m> objects;
+    private Activity context;
+    private int resource;
+    private ArrayList<TinTuc_m> objects;
     public AdapterTinTuc(@NonNull Activity context, @LayoutRes int resource, @NonNull ArrayList<TinTuc_m> objects) {
         super(context, resource, objects);
         this.context=context;
@@ -40,7 +42,7 @@ public class AdapterTinTuc extends ArrayAdapter<TinTuc_m> {
         LayoutInflater layoutInflater = this.context.getLayoutInflater();
 
         Typeface font = Typeface.createFromAsset(this.context.getAssets(),"fonts/fontmain.ttf");
-        View row = layoutInflater.inflate(this.resource, null);
+        @SuppressLint("ViewHolder") View row = layoutInflater.inflate(this.resource, null);
 
         try {
         TextView id_TieuDe= row.findViewById(R.id.id_Tieu_De);
@@ -53,7 +55,12 @@ public class AdapterTinTuc extends ArrayAdapter<TinTuc_m> {
 
         String urlAnh= tinTucM.getUrlHinh();
 
-            Picasso.with(context).load(urlAnh).into(id_Anh);
+
+            Glide.with(context)
+                    .load(urlAnh)
+                    .apply(new RequestOptions().override(100, 100))
+                    .into(id_Anh);
+            //Picasso.with(context).load(urlAnh).into(id_Anh);
 
 
         row.setOnClickListener(new View.OnClickListener() {
@@ -65,7 +72,7 @@ public class AdapterTinTuc extends ArrayAdapter<TinTuc_m> {
 
 
 
-        }catch (Exception ex){
+        }catch (Exception ignored){
 
         }
         return row;

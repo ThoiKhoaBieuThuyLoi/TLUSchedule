@@ -1,29 +1,21 @@
 package vn.lcsoft.luongchung.adapters;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.net.Uri;
-import android.support.annotation.LayoutRes;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.facebook.login.widget.ProfilePictureView;
-import com.squareup.picasso.Picasso;
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
-
 import de.hdodenhof.circleimageview.CircleImageView;
 import vn.lcsoft.luongchung.models.TinNhan;
 import vn.lcsoft.luongchung.tluschedule.ChatMain;
@@ -32,7 +24,7 @@ import vn.lcsoft.luongchung.tluschedule.R;
 public class AdapterTinNhan extends BaseAdapter {
     private String ID;
     private Activity context;
-    ArrayList<TinNhan> objects;
+    private ArrayList<TinNhan> objects;
     public AdapterTinNhan(ChatMain chatMain, ArrayList<TinNhan> arrTinNhan, String s) {
         this.context=chatMain;
         this.objects=arrTinNhan;
@@ -61,16 +53,17 @@ public class AdapterTinNhan extends BaseAdapter {
         return i;
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         Typeface font = Typeface.createFromAsset(context.getAssets(),"fonts/fontmain.ttf");
         final TinNhan tinNhan = objects.get(i);
         LayoutInflater inflater = context.getLayoutInflater();
-        View v= inflater.inflate(R.layout.itemchatkhach, null);
+        @SuppressLint({"ViewHolder", "InflateParams"}) View v= inflater.inflate(R.layout.itemchatkhach, null);
         CircleImageView imgAva=v.findViewById(R.id.imgAVTKhach);
         TextView txtKhach=v.findViewById(R.id.txtKhach);
         TextView txtNgGui=v.findViewById(R.id.txtNguoiGui);
-        Picasso.with(context)
+        Glide.with(context)
                 .load("https://graph.facebook.com/" + tinNhan.getId()+ "/picture?type=small")
                 .into(imgAva);
         txtKhach.setText(tinNhan.getNoiDung());
@@ -78,7 +71,7 @@ public class AdapterTinNhan extends BaseAdapter {
         txtNgGui.setTypeface(font);
         txtNgGui.setText(tinNhan.getName()+": ");
         if(tinNhan.getId().equals("1048254815322995")){
-            txtNgGui.setTextColor(Color.parseColor("#007787"));
+            txtNgGui.setTextColor(Color.parseColor("#D44A3C"));
         }
 
 

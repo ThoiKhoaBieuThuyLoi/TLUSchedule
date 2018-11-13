@@ -22,7 +22,7 @@
         android:layout_gravity="center"
 
         android:text="@string/app_name"
-        android:textColor="#ffc067"
+        android:textColor="#f7dfbc"
         android:textStyle="bold"/>
    <Button
        android:id="@+id/btnHDdd"

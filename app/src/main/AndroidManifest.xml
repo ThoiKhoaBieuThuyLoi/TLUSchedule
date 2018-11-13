@@ -29,6 +29,9 @@
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-5001443737686857~4542932552"/>
 
         <activity
             android:name="com.facebook.FacebookActivity"
@@ -61,7 +64,6 @@
         <activity android:name=".Thongbao" />
         <activity android:name=".LoginChat" />
         <activity android:name=".ChatMain" />
-        <activity android:name=".UpdateApp"></activity>
     </application>
 
 </manifest>

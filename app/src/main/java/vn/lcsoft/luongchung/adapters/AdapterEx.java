@@ -1,5 +1,6 @@
 package vn.lcsoft.luongchung.adapters;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -24,10 +25,9 @@ import vn.lcsoft.luongchung.tluschedule.R;
  */
 
 public class AdapterEx extends BaseExpandableListAdapter {
-    Activity context;
-    List<String> Me;
-    HashMap<String,List<lich_chuan>> Con;
-    String LuuThoiGianTietHoc="Chuaco";
+    private Activity context;
+    private List<String> Me;
+    private HashMap<String,List<lich_chuan>> Con;
 
     public AdapterEx(Activity context, List<String> me, HashMap<String, List<lich_chuan>> con) {
         this.context = context;
@@ -70,9 +70,11 @@ public class AdapterEx extends BaseExpandableListAdapter {
         return false;
     }
 
+    @SuppressLint("InflateParams")
     @Override
     public View getGroupView(int i, boolean b, View view, ViewGroup viewGroup) {
         LayoutInflater layoutInflater= (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        assert layoutInflater != null;
         view=layoutInflater.inflate(R.layout.item_group,null);
         TextView txt_TenMe= view.findViewById(R.id.txt_Me);
         String ten= (String) getGroup(i);
@@ -83,12 +85,15 @@ public class AdapterEx extends BaseExpandableListAdapter {
         return view;
     }
 
+    @SuppressLint("InflateParams")
     @Override
     public View getChildView(int i, int i1, boolean b, View view, ViewGroup viewGroup) {
         LayoutInflater layoutInflater= (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        assert layoutInflater != null;
         view=layoutInflater.inflate(R.layout.item_lichhoc,null);
         final lich_chuan lc= (lich_chuan) getChild(i,i1);
-        SharedPreferences sharedPreferences= view.getContext().getSharedPreferences(LuuThoiGianTietHoc, Context.MODE_PRIVATE);
+        String luuThoiGianTietHoc = "Chuaco";
+        SharedPreferences sharedPreferences= view.getContext().getSharedPreferences(luuThoiGianTietHoc, Context.MODE_PRIVATE);
         TextView txt_TenMonHoc=  view.findViewById(R.id.txt_tenmonhoc);
         TextView txt_Diadiem=  view.findViewById(R.id.txt_diadiem);
         TextView txt_thoigian=  view.findViewById(R.id.txt_thoigian);
@@ -108,7 +113,7 @@ public class AdapterEx extends BaseExpandableListAdapter {
 
     private void xulyclickitem(lich_chuan lichHomNay) {
         Intent intent = new Intent(this.context,ChiTietLichHoc.class);
-        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("dd/MM/yyyy");
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDateFormat=new SimpleDateFormat("dd/MM/yyyy");
         intent.putExtra("ID", lichHomNay.getId());
         intent.putExtra("TenGV", lichHomNay.getGiangVien());
         intent.putExtra("TietKT", lichHomNay.getTietKetThuc());

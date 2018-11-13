@@ -1,5 +1,6 @@
 package vn.lcsoft.luongchung.tluschedule;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
@@ -7,7 +8,6 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 public class ChiTietLichHoc extends AppCompatActivity {
-    private TextView txtMain;
     private TextView TenMon, TenLopTC, GiangVien, DiaDiem, TietHoc, ThoiGian, SoTC;
     Intent intent;
 
@@ -18,9 +18,10 @@ public class ChiTietLichHoc extends AppCompatActivity {
         addControls();
     }
 
+    @SuppressLint("SetTextI18n")
     private void addControls() {
         Typeface font = Typeface.createFromAsset(this.getAssets(), "fonts/fontmain.ttf");
-        txtMain =  findViewById(R.id.txt_main);
+        TextView txtMain = findViewById(R.id.txt_main);
         txtMain.setTypeface(font);
         TenMon = findViewById(R.id.id_tenmon);
         TenLopTC =  findViewById(R.id.id_tenloptinchi);

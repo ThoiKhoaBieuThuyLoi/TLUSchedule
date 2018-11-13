@@ -1,5 +1,6 @@
 package vn.lcsoft.luongchung.tluschedule;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -22,6 +23,7 @@ public class NoiDungTinTuc extends AppCompatActivity {
     WebView webView;
     String LinkURL;
     AlertDialog dialog;
+    @SuppressLint("SetJavaScriptEnabled")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +39,7 @@ public class NoiDungTinTuc extends AppCompatActivity {
         dialog.setCanceledOnTouchOutside(false);
         new GetHTML().execute();
     }
+    @SuppressLint("StaticFieldLeak")
     class GetHTML extends AsyncTask<String,Void,String> {
         @Override
         protected void onPreExecute() {
@@ -61,7 +64,7 @@ public class NoiDungTinTuc extends AppCompatActivity {
                 Document doc = Jsoup.connect(LinkURL).timeout(20*1000).get();
                 Elements elements = doc.select("div.primary");
                 html=elements.toString();
-            } catch (Exception ex){ }
+            } catch (Exception ignored){ }
             String html_xuly=xulyhtml(html);
             return "<style>img{display: inline; max-height: 270px; max-width: 100%;} iframe{display: inline;max-height: 270px; max-width: 100%;}</style>"+html_xuly;
         }

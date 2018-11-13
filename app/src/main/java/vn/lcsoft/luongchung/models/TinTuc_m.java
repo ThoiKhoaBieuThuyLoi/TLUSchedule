@@ -17,38 +17,25 @@ public class TinTuc_m {
         this.urlLink = urlLink;
     }
 
-    public TinTuc_m() {
-    }
+
 
     public String getTieuDe() {
         return tieuDe;
     }
 
-    public void setTieuDe(String tieuDe) {
-        this.tieuDe = tieuDe;
-    }
 
     public String getTomTat() {
         return tomTat;
     }
 
-    public void setTomTat(String tomTat) {
-        this.tomTat = tomTat;
-    }
 
     public String getUrlHinh() {
         return urlHinh;
     }
 
-    public void setUrlHinh(String urlHinh) {
-        this.urlHinh = urlHinh;
-    }
 
     public String getUrlLink() {
         return urlLink;
     }
 
-    public void setUrlLink(String urlLink) {
-        this.urlLink = urlLink;
-    }
 }

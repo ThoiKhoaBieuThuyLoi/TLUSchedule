@@ -1,9 +1,11 @@
 package vn.lcsoft.luongchung.adapters;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,10 +23,9 @@ import vn.lcsoft.luongchung.tluschedule.R;
  */
 
 public class AdapterLichHoc extends ArrayAdapter<lich_chuan> {
-    String LuuThoiGianTietHoc="Chuaco";
-    Activity context;
-    int resource;
-    List<lich_chuan> objects;
+    private Activity context;
+    private int resource;
+    private List<lich_chuan> objects;
     public AdapterLichHoc(Activity context, int resource, List<lich_chuan> objects) {
         super(context, resource, objects);
         this.context=context;
@@ -33,11 +34,13 @@ public class AdapterLichHoc extends ArrayAdapter<lich_chuan> {
     }
 
 
+    @NonNull
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, @NonNull ViewGroup parent) {
         LayoutInflater layoutInflater=this.context.getLayoutInflater();
-        View view=layoutInflater.inflate(this.resource,null);
-        SharedPreferences sharedPreferences= getContext().getSharedPreferences(LuuThoiGianTietHoc, Context.MODE_PRIVATE);
+        @SuppressLint("ViewHolder") View view=layoutInflater.inflate(this.resource,null);
+        String luuThoiGianTietHoc = "Chuaco";
+        SharedPreferences sharedPreferences= getContext().getSharedPreferences(luuThoiGianTietHoc, Context.MODE_PRIVATE);
 
         TextView txt_Thoigian= view.findViewById(R.id.txt_thoigian);
         TextView txt_tenmonhoc= view.findViewById(R.id.txt_tenmonhoc);
@@ -58,7 +61,7 @@ public class AdapterLichHoc extends ArrayAdapter<lich_chuan> {
     }
 
     private void xulyclickitem(lich_chuan lichHomNay) {
-        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("dd/MM/yyyy");
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDateFormat=new SimpleDateFormat("dd/MM/yyyy");
        // Toast.makeText(context.getApplication(),"thoi gian"+simpleDateFormat.format(lichHomNay.getNgay()),Toast.LENGTH_LONG).show();
         Intent intent = new Intent(context,ChiTietLichHoc.class);
         intent.putExtra("ID", lichHomNay.getId());

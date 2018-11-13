@@ -16,16 +16,9 @@ public class DiaDiem implements Serializable {
         this.phongHocs = phongHocs;
     }
 
-    public DiaDiem() {
-    }
 
-    public int getIdGD() {
-        return idGD;
-    }
 
-    public void setIdGD(int idGD) {
-        this.idGD = idGD;
-    }
+
 
     public ArrayList<PhongHoc> getPhongHocs() {
         return phongHocs;

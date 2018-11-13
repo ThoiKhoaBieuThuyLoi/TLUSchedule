@@ -13,7 +13,7 @@ public class ThuHoc implements Serializable {
     private String tietBD;
     private String tietKT;
 
-    public ThuHoc(int idThu, String thu, String tietBD, String tietKT) {
+    ThuHoc(int idThu, String thu, String tietBD, String tietKT) {
         this.idThu = idThu;
         this.thu = thu;
         this.tietBD = tietBD;
@@ -37,21 +37,5 @@ public class ThuHoc implements Serializable {
 
     public String getTietKT() {
         return tietKT;
-    }
-
-    public void setIdThu(int idThu) {
-        this.idThu = idThu;
-    }
-
-    public void setThu(String thu) {
-        this.thu = thu;
-    }
-
-    public void setTietBD(String tietBD) {
-        this.tietBD = tietBD;
-    }
-
-    public void setTietKT(String tietKT) {
-        this.tietKT = tietKT;
     }
 }

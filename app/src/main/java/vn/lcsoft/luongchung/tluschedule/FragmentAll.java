@@ -1,14 +1,15 @@
 package vn.lcsoft.luongchung.tluschedule;
 
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,10 +40,9 @@ public class FragmentAll extends Fragment implements Comparator<lich_chuan> {
     AlertDialog dialog;
     RelativeLayout rl;
     private ExpandableListView listView;
-    private AdapterEx adapterEx;
     private List<String> listDataHeader;
+    @SuppressLint("SimpleDateFormat")
     SimpleDateFormat sf= new SimpleDateFormat("dd/MM/yyyy");
-    SimpleDateFormat dateFormat=new SimpleDateFormat("dd/MM/yyyy");
     private HashMap<String,List<lich_chuan>> listHash;
     String DATABASE_NAME="dbthoikhoabieu.sqlite";
     SQLiteDatabase sqLiteDatabase=null;
@@ -52,7 +52,7 @@ public class FragmentAll extends Fragment implements Comparator<lich_chuan> {
 
     public FragmentAll() {}
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_fragment_all, container, false);
         listView = view.findViewById(R.id.lv_tatca);
         listView.setFastScrollEnabled(true);
@@ -88,10 +88,10 @@ public class FragmentAll extends Fragment implements Comparator<lich_chuan> {
     private  void  getngayminmax()    {
         try
         {
-            sqLiteDatabase=getActivity().openOrCreateDatabase(DATABASE_NAME, Context.MODE_PRIVATE,null);
+            sqLiteDatabase= getContext().openOrCreateDatabase(DATABASE_NAME, Context.MODE_PRIVATE,null);
             String sql="SELECT NgayHoc FROM tbthoikhoabieu";
             Cursor cursor=sqLiteDatabase.rawQuery(sql,null);
-            String date_tmp="";
+            String date_tmp;
             Date date_ht=new Date();
             Calendar ca=Calendar.getInstance();
             String dateht=sf.format(ca.getTime());
@@ -115,7 +115,7 @@ public class FragmentAll extends Fragment implements Comparator<lich_chuan> {
             }
             cursor.close();
         }
-        catch (Exception ex) { }
+        catch (Exception ignored) { }
     }
     @Override
     public int compare(lich_chuan lich_chuan, lich_chuan t1) {
@@ -126,6 +126,7 @@ public class FragmentAll extends Fragment implements Comparator<lich_chuan> {
         else
             return -1;
     }
+    @SuppressLint("StaticFieldLeak")
     public class GetData extends AsyncTask<Void, Void, Void> {
         protected void onPreExecute() {
             super.onPreExecute();
@@ -146,6 +147,7 @@ public class FragmentAll extends Fragment implements Comparator<lich_chuan> {
 
         }
     }
+    @SuppressLint("StaticFieldLeak")
     public class GetData1 extends AsyncTask<Void, Void, Void> {
 
         protected void onPreExecute() {
@@ -160,7 +162,7 @@ public class FragmentAll extends Fragment implements Comparator<lich_chuan> {
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
 
-            adapterEx=new AdapterEx(getActivity(),listDataHeader,listHash);
+            AdapterEx adapterEx = new AdapterEx(getActivity(), listDataHeader, listHash);
             listView.setAdapter(adapterEx);
             if (listDataHeader.size()==0)
             {
@@ -181,13 +183,12 @@ public class FragmentAll extends Fragment implements Comparator<lich_chuan> {
         kt.setTime(Date_Max);
         kt.add(Calendar.DATE, 1);
         ArrayList<lich_chuan> chuanArrayList;
-        Log.d("Luongvanchung96","min:"+dateFormat.format(bd.getTime()));
-        Log.d("Luongvanchung96","max:"+dateFormat.format(kt.getTime()));
+//        Log.d("Luongvanchung96","min:"+sf.format(bd.getTime()));
+//        Log.d("Luongvanchung96","max:"+sf.format(kt.getTime()));
         while (bd.getTime().before(kt.getTime()))
         {
             chuanArrayList=new ArrayList<>();
-            // String a ="Thứ "+bd.get(Calendar.DAY_OF_WEEK)+", Ngày "+bd.get(Calendar.DATE)+" Tháng "+bd.get(Calendar.MONTH)+" Năm "+bd.get(Calendar.YEAR);
-            String a ="Thứ "+bd.get(Calendar.DAY_OF_WEEK)+", Ngày "+dateFormat.format(bd.getTime());
+            String a ="Thứ "+bd.get(Calendar.DAY_OF_WEEK)+", Ngày "+sf.format(bd.getTime());
             listDataHeader.add(a);
             for (int i=0;i<arr_tatca.size();i++)
             {
@@ -201,7 +202,7 @@ public class FragmentAll extends Fragment implements Comparator<lich_chuan> {
             listHash.put(a,chuanArrayList);
             bd.add(Calendar.DATE, 1);
         }
-        Log.d("Luongvanchung96","xong: init");
+//        Log.d("Luongvanchung96","xong: init");
     }
     private void initData() {
         try
@@ -210,7 +211,7 @@ public class FragmentAll extends Fragment implements Comparator<lich_chuan> {
             sqLiteDatabase=getActivity().openOrCreateDatabase(DATABASE_NAME, Context.MODE_PRIVATE,null);
             String sql="SELECT * FROM tbthoikhoabieu";
             Cursor cursor=sqLiteDatabase.rawQuery(sql,null);
-            SimpleDateFormat sf= new SimpleDateFormat("dd/MM/yyyy");
+            @SuppressLint("SimpleDateFormat") SimpleDateFormat sf= new SimpleDateFormat("dd/MM/yyyy");
             Date date1 =new Date();
             while (cursor.moveToNext())
             {
@@ -230,7 +231,7 @@ public class FragmentAll extends Fragment implements Comparator<lich_chuan> {
             cursor.close();
             //</editor-fold>
         }
-        catch (Exception ex)
+        catch (Exception ignored)
         {
 
         }

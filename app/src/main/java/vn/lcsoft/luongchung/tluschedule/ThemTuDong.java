@@ -1,5 +1,6 @@
 package vn.lcsoft.luongchung.tluschedule;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
@@ -34,10 +35,10 @@ import java.util.Date;
 import vn.lcsoft.luongchung.models.Lich_PhanMang;
 import vn.lcsoft.luongchung.models.MonHoc;
 
-import static android.content.Context.MODE_PRIVATE;
 
 public class ThemTuDong extends AppCompatActivity {
     String linkMain="http://dangky.tlu.edu.vn";
+    @SuppressLint("SimpleDateFormat")
     SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
     String txtHtml,tmpURL="";
     WebView webview;
@@ -108,7 +109,7 @@ public class ThemTuDong extends AppCompatActivity {
                             Toast.makeText(ThemTuDong.this, "Lỗi nhập dữ liệu.", Toast.LENGTH_LONG).show();
                         }
                         Intent intent=new Intent(ThemTuDong.this,MainActivity.class);
-                        intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TASK| intent.FLAG_ACTIVITY_CLEAR_TOP | intent.FLAG_ACTIVITY_NEW_TASK);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
                     }
                 }).setNegativeButton("không",new DialogInterface.OnClickListener() {
@@ -120,7 +121,7 @@ public class ThemTuDong extends AppCompatActivity {
                             Toast.makeText(ThemTuDong.this, "Lỗi nhập dữ liệu.", Toast.LENGTH_LONG).show();
                         }
                         Intent intent=new Intent(ThemTuDong.this,MainActivity.class);
-                        intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TASK| intent.FLAG_ACTIVITY_CLEAR_TOP | intent.FLAG_ACTIVITY_NEW_TASK);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK| Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
                     }
                 }
@@ -136,7 +137,7 @@ public class ThemTuDong extends AppCompatActivity {
             sqLiteDatabase.execSQL("DELETE FROM tbimage");
             sqLiteDatabase.close();
         }
-        catch (Exception ex) { }
+        catch (Exception ignored) { }
     }
     private void xulyImport() throws ParseException {
         try
@@ -228,13 +229,13 @@ public class ThemTuDong extends AppCompatActivity {
                 }
             }
         }
-        catch (Exception ex)
+        catch (Exception ignored)
         {}
     }
+    @SuppressLint({"SetJavaScriptEnabled", "AddJavascriptInterface"})
     private void addControls() throws ParseException {
         SharedPreferences sharedPreferences= getSharedPreferences(getString(R.string.luuURL),MODE_PRIVATE);
-        String url=sharedPreferences.getString("URL",getString(R.string.linkdangky));
-        linkMain=url;
+        linkMain= sharedPreferences.getString("URL",getString(R.string.linkdangky));
         dialog = new ProgressDialog(this, AlertDialog.THEME_DEVICE_DEFAULT_DARK);
         dialog_custom =new Dialog(ThemTuDong.this);
         navigationView=findViewById(R.id.navigation);

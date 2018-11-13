@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="vn.lcsoft.luongchung.tluschedule.MainActivity">
     <LinearLayout
-        android:background="@drawable/backgroud"
+        android:layout_weight="1"
+        android:background="@color/nen"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp">
+
         <include
             android:id="@+id/toolbar_actionbar"
             layout="@layout/bar"
@@ -27,8 +30,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:tabTextColor="#ffffff"
-                    app:tabSelectedTextColor="#E4992F"
-                    app:tabIndicatorColor="#E4992F"
+                    app:tabSelectedTextColor="#f1cf9d"
+                    app:tabIndicatorColor="#f1cf9d"
                     android:id="@+id/tablayout"
                     app:tabMode="fixed"
                     app:tabGravity="fill">
@@ -42,15 +45,21 @@
             </LinearLayout>
         </android.support.design.widget.AppBarLayout>
     </LinearLayout>
+
     <LinearLayout
-        android:background="@drawable/backgroud"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true" >
+        <LinearLayout
+        android:background="@color/nen"
         android:padding="3dp"
         android:id="@+id/navigation"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_gravity="bottom"
-        android:orientation="horizontal"
-        android:layout_alignParentBottom="true" >
+        android:orientation="horizontal">
         <LinearLayout
             android:id="@+id/btn1"
             android:gravity="center"
@@ -106,7 +115,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
-
         <LinearLayout
             android:id="@+id/btn3"
             android:gravity="center"
@@ -129,7 +137,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
-
         <LinearLayout
             android:id="@+id/btn4"
             android:gravity="center"
@@ -148,5 +155,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
-</RelativeLayout>
+
+</LinearLayout>

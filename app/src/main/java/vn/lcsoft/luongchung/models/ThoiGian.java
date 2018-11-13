@@ -8,52 +8,34 @@ import java.util.ArrayList;
  */
 
 public class ThoiGian implements Serializable {
-    private int idGiaiDoan;
     private String ngayBD;
     private String ngayKT;
     private ArrayList<ThuHoc> thuHocs;
 
-    public ThoiGian(int idGiaiDoan, String ngayBD, String ngayKT, String txtthuHoc) {
-        this.idGiaiDoan = idGiaiDoan;
+    ThoiGian(String ngayBD, String ngayKT, String txtthuHoc) {
         this.ngayBD = ngayBD;
         this.ngayKT = ngayKT;
         this.thuHocs = getArray_ThuHoc(txtthuHoc);
     }
 
-    public ThoiGian() {
-    }
 
-    public int getIdGiaiDoan() {
-        return idGiaiDoan;
-    }
 
-    public void setIdGiaiDoan(int idGiaiDoan) {
-        this.idGiaiDoan = idGiaiDoan;
-    }
+
 
     public String getNgayBD() {
         return ngayBD;
     }
 
-    public void setNgayBD(String ngayBD) {
-        this.ngayBD = ngayBD;
-    }
 
     public String getNgayKT() {
         return ngayKT;
     }
 
-    public void setNgayKT(String ngayKT) {
-        this.ngayKT = ngayKT;
-    }
 
     public ArrayList<ThuHoc> getThuHocs() {
         return thuHocs;
     }
 
-    public void setThuHocs(ArrayList<ThuHoc> thuHocs) {
-        this.thuHocs = thuHocs;
-    }
 
 
     private ArrayList<ThuHoc> getArray_ThuHoc(String s){
@@ -90,7 +72,7 @@ public class ThoiGian implements Serializable {
         }
         return temp;
     }
-    public  int layvitrichuoi(String Tu, String Chuoi, int vt)    {
+    private int layvitrichuoi(String Tu, String Chuoi, int vt)    {
         int dem=0;
         for (int i=0;i<Chuoi.length()-(Tu.length()-1);i++)
         {
@@ -113,7 +95,7 @@ public class ThoiGian implements Serializable {
         }
         return 0;
     }
-    public  int DemSoChuoi(String tu, String chuoi)   {
+    private int DemSoChuoi(String tu, String chuoi)   {
         int dem=0;
         for (int i=0;i<chuoi.length()-(tu.length()-1);i++)
         {

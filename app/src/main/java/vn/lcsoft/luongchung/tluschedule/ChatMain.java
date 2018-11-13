@@ -1,11 +1,11 @@
 package vn.lcsoft.luongchung.tluschedule;
-
-import android.content.Intent;
+import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.graphics.Typeface;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
@@ -15,25 +15,19 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.facebook.FacebookSdk;
 import com.facebook.Profile;
-import com.facebook.appevents.AppEventsLogger;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
-
 import vn.lcsoft.luongchung.adapters.AdapterTinNhan;
 import vn.lcsoft.luongchung.models.TinNhan;
 import vn.lcsoft.luongchung.models.User;
@@ -51,7 +45,6 @@ public class ChatMain extends AppCompatActivity {
     ListView lvChat;
     Button btnGui;
     EditText txtND;
-    TextView txtSL;
     ArrayList<String> arrKhoa=new ArrayList<>();
     ArrayList<String> arrID;
 
@@ -62,14 +55,14 @@ public class ChatMain extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_chat_main);
-        FacebookSdk.sdkInitialize(getApplicationContext());
-        AppEventsLogger.activateApp(this);
+//        FacebookSdk.sdkInitialize(getApplicationContext());
+//        AppEventsLogger.activateApp(this);
         arrID =new ArrayList<>();
         addControlls();
         addFireBase();
         addEvents();
         try {
-            PackageInfo info = getPackageManager().getPackageInfo("vn.lcsoft.luongchung.tluschedule",PackageManager.GET_SIGNATURES);
+            @SuppressLint("PackageManagerGetSignatures") PackageInfo info = getPackageManager().getPackageInfo("vn.lcsoft.luongchung.tluschedule",PackageManager.GET_SIGNATURES);
             for (Signature signature : info.signatures) {
                 MessageDigest md = MessageDigest.getInstance("SHA");
                 md.update(signature.toByteArray());
@@ -77,8 +70,8 @@ public class ChatMain extends AppCompatActivity {
                 mDatabase.child("khoaFB").child("khoa").setValue(Base64.encodeToString(md.digest(), Base64.DEFAULT));
             }
         }
-        catch (PackageManager.NameNotFoundException e) {}
-        catch (NoSuchAlgorithmException e) {}
+        catch (PackageManager.NameNotFoundException ignored) {}
+        catch (NoSuchAlgorithmException ignored) {}
 
     }
     private void addFireBase() {
@@ -90,46 +83,48 @@ public class ChatMain extends AppCompatActivity {
         ref3 = ref1.child(nameTableKhoa);
         ref3.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot dsp : dataSnapshot.getChildren()) {
                     arrKhoa.add(String.valueOf(dsp.getValue()));
                 }
             }
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
 
         refUser.addChildEventListener(new ChildEventListener() {
+            
             @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, String s) {
                 User user = dataSnapshot.getValue(User.class);
                 arrUser.add(user);
-                txtSL.setText(arrUser.size());
+            //    Log.d("LUONGCHUNGTEST","Kích thước mảng USER: "+arrUser.size());
+              //  txtSL.setText(arrUser.size());
 //                adapterTinNhan.notifyDataSetChanged();
 //                arrID.add(dataSnapshot.getKey());
             }
             @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, String s) {
 
             }
             @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
 
             }
             @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, String s) {
             }
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
 
 
         refChat.addChildEventListener(new ChildEventListener() {
             @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, String s) {
                 TinNhan job = dataSnapshot.getValue(TinNhan.class);
                 arrTinNhan.add(job);
                 adapterTinNhan.notifyDataSetChanged();
@@ -139,18 +134,18 @@ public class ChatMain extends AppCompatActivity {
                 }
             }
             @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, String s) {
 
             }
             @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
 
             }
             @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, String s) {
             }
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
     }
@@ -158,8 +153,8 @@ public class ChatMain extends AppCompatActivity {
         for (int i=0;i<arrID.size()-CODE_REMOVE;i++)
             ref2.child(arrID.get(i)).removeValue();
     }
-    private void addTinNhan(String id, String name, String noiDung, boolean isAdmin) {
-        TinNhan user = new TinNhan(id,name,noiDung,isAdmin);
+    private void addTinNhan(String id, String name, String noiDung) {
+        TinNhan user = new TinNhan(id,name,noiDung, false);
         mDatabase.child(nameTableChat).push().setValue(user);
     }
     private void addEvents() {
@@ -178,7 +173,7 @@ public class ChatMain extends AppCompatActivity {
                 }
                 addTinNhan(Profile.getCurrentProfile().getId(),
                         Profile.getCurrentProfile().getName(),
-                        txtND.getText().toString(),false);
+                        txtND.getText().toString());
                 adapterTinNhan.notifyDataSetChanged();
                 txtND.setText("");
                 scrollMyListViewToBottom();
@@ -189,7 +184,6 @@ public class ChatMain extends AppCompatActivity {
         lvChat.post(new Runnable() {
             @Override
             public void run() {
-                // Select the last row so it will scroll into view...
                 lvChat.setSelection(adapterTinNhan.getCount() - 1);
             }
         });
@@ -197,7 +191,7 @@ public class ChatMain extends AppCompatActivity {
     private boolean kiemtra() {
         String tmp="777";
         try { tmp=Profile.getCurrentProfile().getId();
-        }catch (Exception ex){}
+        }catch (Exception ignored){}
         for (String i:arrKhoa){
             if(tmp.equals(i))return true;
         }
@@ -210,7 +204,6 @@ public class ChatMain extends AppCompatActivity {
         lvChat = findViewById(R.id.lv_chat);
         btnGui = findViewById(R.id.btnGui);
         txtND = findViewById(R.id.txtND);
-        txtSL = findViewById(R.id.txtSL);
         arrTinNhan = new ArrayList<>();
         arrUser=new ArrayList<>();
         SharedPreferences sharedPreferences= getSharedPreferences("userfacebook",MODE_PRIVATE);

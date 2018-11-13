@@ -1,7 +1,6 @@
 package vn.lcsoft.luongchung.tluschedule;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.widget.TextView;

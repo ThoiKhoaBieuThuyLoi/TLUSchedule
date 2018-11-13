@@ -1,5 +1,6 @@
 package vn.lcsoft.luongchung.tluschedule;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
@@ -42,6 +43,7 @@ public class TinTuc extends AppCompatActivity {
         Link=(getString(R.string.linktintuc));
         new GetData().execute();
     }
+    @SuppressLint("StaticFieldLeak")
     public class GetData extends AsyncTask<Void, Void, Void> {
 
         protected void onPreExecute() {
@@ -51,7 +53,7 @@ public class TinTuc extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... voids) {
             try { DocTinTuc(); }
-            catch (Exception ex){ }
+            catch (Exception ignored){ }
             return null;
         }
         @Override
@@ -61,11 +63,11 @@ public class TinTuc extends AppCompatActivity {
                 adapterTinTuc = new AdapterTinTuc(TinTuc.this, R.layout.item_tintuc, arrTinTucM);
                 lv_TinTuc.setAdapter(adapterTinTuc);
                 dialog.dismiss();
-            }catch (Exception ex){ }
+            }catch (Exception ignored){ }
         }
     }
     private void DocTinTuc() {
-        Document doc = null;
+        Document doc;
         try {
             doc = Jsoup.connect(Link).timeout(5*1000).get();
             Elements elements = doc.select("div.related");

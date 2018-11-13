@@ -12,16 +12,14 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.facebook.login.widget.ProfilePictureView;
+import com.bumptech.glide.Glide;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.iid.FirebaseInstanceId;
-import com.squareup.picasso.Picasso;
 
 import vn.lcsoft.luongchung.models.Phanhoi;
 
 public class InfoTacGia extends AppCompatActivity {
-    private String userID="100004154587803";
     DatabaseReference mDatabase;
     LinearLayout btnFace,btnGithub,btnCall,btnGmail;
     ImageView avatar;
@@ -88,7 +86,7 @@ public class InfoTacGia extends AppCompatActivity {
                     intent.setType("text/html");
                     intent.setPackage("com.google.android.gm");
                     startActivity(Intent.createChooser(intent, "Send mail"));
-                }catch (Exception ex){
+                }catch (Exception ignored){
 
                 }
             }
@@ -102,8 +100,9 @@ public class InfoTacGia extends AppCompatActivity {
             }
         });
 
-        Picasso.with(this)
-                .load("https://graph.facebook.com/" + userID+ "/picture?type=large")
+        String userID = "100004154587803";
+        Glide.with(this)
+                .load("https://graph.facebook.com/" + userID + "/picture?type=large")
                 .into(avatar);
     }
 
